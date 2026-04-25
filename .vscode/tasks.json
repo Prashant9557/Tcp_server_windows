@@ -1,0 +1,67 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build All",
+            "type": "shell",
+            "command": "g++",
+            "args": ["-o", "server.exe", "server.cpp", "-lws2_32", "-std=c++17", "-Wall"],
+            "group": { "kind": "build", "isDefault": true },
+            "presentation": { "reveal": "always", "panel": "shared" },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Build Server",
+            "type": "shell",
+            "command": "g++",
+            "args": ["-o", "server.exe", "server.cpp", "-lws2_32", "-std=c++17", "-Wall"],
+            "group": "build",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Build Client",
+            "type": "shell",
+            "command": "g++",
+            "args": ["-o", "client.exe", "client.cpp", "-lws2_32", "-std=c++17", "-Wall"],
+            "group": "build",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Build UDP Client",
+            "type": "shell",
+            "command": "g++",
+            "args": ["-o", "udp_client.exe", "udp_client.cpp", "-lws2_32", "-std=c++17", "-Wall"],
+            "group": "build",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Build All Files",
+            "type": "shell",
+            "command": "g++ -o server.exe server.cpp -lws2_32 -std=c++17 && g++ -o client.exe client.cpp -lws2_32 -std=c++17 && g++ -o udp_client.exe udp_client.cpp -lws2_32 -std=c++17 && echo Build successful!",
+            "group": "build",
+            "presentation": { "reveal": "always", "panel": "shared" },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Run Server",
+            "type": "shell",
+            "command": ".\\server.exe",
+            "group": "test",
+            "presentation": { "reveal": "always", "panel": "new" }
+        },
+        {
+            "label": "Run Client",
+            "type": "shell",
+            "command": ".\\client.exe",
+            "group": "test",
+            "presentation": { "reveal": "always", "panel": "new" }
+        },
+        {
+            "label": "Run UDP Client",
+            "type": "shell",
+            "command": ".\\udp_client.exe",
+            "group": "test",
+            "presentation": { "reveal": "always", "panel": "new" }
+        }
+    ]
+}
