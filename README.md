@@ -1,4 +1,5 @@
 # Multi-Client TCP/UDP Chat Server
+
 ### Windows Version | C++ | Winsock2 | Windows Threads
 
 ---
@@ -30,6 +31,7 @@ Windows pe C++ compile karne ke liye **MinGW** chahiye.
 
 3. Install hone ke baad **MSYS2 terminal** khulega
    Ye command run karo:
+
    ```
    pacman -S mingw-w64-x86_64-gcc
    ```
@@ -67,12 +69,15 @@ Windows pe C++ compile karne ke liye **MinGW** chahiye.
 ## Step 3 — Build Karo
 
 ### Option A — VS Code se (easy):
+
 ```
 Ctrl + Shift + B
 ```
+
 "Build All Files" select karo → Enter
 
 ### Option B — Terminal se:
+
 VS Code mein terminal kholo (`Ctrl + `` ` ```) aur ye run karo:
 
 ```bash
@@ -91,10 +96,13 @@ Agar koi error nahi aaya → build successful!
 `Ctrl + `` ` `` ` → upar `+` button se naya terminal
 
 ### Terminal 1 — Server:
+
 ```bash
 .\server.exe
 ```
+
 Output:
+
 ```
 =========================================
   Multi-Client TCP/UDP Chat Server
@@ -105,21 +113,27 @@ Waiting for connections...
 ```
 
 ### Terminal 2 — Pehla Client:
+
 ```bash
 .\client.exe
 ```
+
 Naam type karo jab pooche → Enter
 
 ### Terminal 3 — Doosra Client:
+
 ```bash
 .\client.exe
 ```
+
 Alag naam do → ab dono ke beech chat ho sakti hai!
 
 ### Terminal 4 (optional) — UDP Client:
+
 ```bash
 .\udp_client.exe
 ```
+
 Koi bhi message type karo → server echo karega
 
 ---
@@ -140,37 +154,41 @@ Waiting...                    Enter name: Prashant   Enter name: Rahul
 
 ## Linux vs Windows — Kya Badla
 
-| Linux (POSIX)              | Windows (Winsock)           |
-|----------------------------|-----------------------------|
-| `#include <sys/socket.h>`  | `#include <winsock2.h>`     |
-| `pthread_create()`         | `CreateThread()`            |
-| `std::mutex`               | `CRITICAL_SECTION`          |
-| `close(fd)`                | `closesocket(sock)`         |
-| `SOCKET` = `int`           | `SOCKET` = special type     |
-| Kuch setup nahi            | `WSAStartup()` zaruri       |
+| Linux (POSIX)             | Windows (Winsock)       |
+| ------------------------- | ----------------------- |
+| `#include <sys/socket.h>` | `#include <winsock2.h>` |
+| `pthread_create()`        | `CreateThread()`        |
+| `std::mutex`              | `CRITICAL_SECTION`      |
+| `close(fd)`               | `closesocket(sock)`     |
+| `SOCKET` = `int`          | `SOCKET` = special type |
+| Kuch setup nahi           | `WSAStartup()` zaruri   |
 
 ---
 
 ## Common Errors aur Fix
 
 **"g++ not found"**
+
 ```
 MinGW install nahi hua ya PATH mein nahi hai
 → Step 1 dobara karo
 ```
 
 **"WSAStartup failed"**
+
 ```
 Winsock initialize nahi hua
 → Normally nahi hoga — agar ho toh PC restart karo
 ```
 
 **"Connect failed"**
+
 ```
 Server pehle start karo, phir client
 ```
 
 **"Port already in use"**
+
 ```
 Command Prompt mein:
 netstat -ano | findstr :8080
@@ -178,6 +196,7 @@ taskkill /PID <number> /F
 ```
 
 **Firewall Warning aaye toh:**
+
 ```
 "Allow Access" click karo — server ko network access chahiye
 ```
@@ -186,12 +205,14 @@ taskkill /PID <number> /F
 
 ## Concepts Jo Interview Mein Kaam Aayenge
 
-| Concept | Code mein kahan |
-|---|---|
-| Socket lifecycle | `socket()` → `bind()` → `listen()` → `accept()` |
-| TCP vs UDP | `SOCK_STREAM` vs `SOCK_DGRAM` |
-| Multi-threading | `CreateThread()` per client |
-| Synchronization | `EnterCriticalSection()` / `LeaveCriticalSection()` |
-| Memory management | `new SOCKET(s)` → thread mein `delete` |
-| Broadcast | Sabko message forward karna |
-| Graceful disconnect | `recv() <= 0` check |
+| Concept             | Code mein kahan                                     |
+| ------------------- | --------------------------------------------------- |
+| Socket lifecycle    | `socket()` → `bind()` → `listen()` → `accept()`     |
+| TCP vs UDP          | `SOCK_STREAM` vs `SOCK_DGRAM`                       |
+| Multi-threading     | `CreateThread()` per client                         |
+| Synchronization     | `EnterCriticalSection()` / `LeaveCriticalSection()` |
+| Memory management   | `new SOCKET(s)` → thread mein `delete`              |
+| Broadcast           | Sabko message forward karna                         |
+| Graceful disconnect | `recv() <= 0` check                                 |
+
+# Tcp_server_windows
